@@ -21,10 +21,12 @@ export async function getVersion(
     case 'network':
       switch (await getOs()) {
         case OSType.linux:
+          core.debug(`Getting versions for Linux...`)
           // TODO adapt this to actual available network versions for linux
           versions = links.getAvailableLocalCudaVersions()
           break
         case OSType.windows:
+          core.debug(`Getting versions for Windows...`)
           versions = (links as WindowsLinks).getAvailableNetworkCudaVersions()
           break
       }
